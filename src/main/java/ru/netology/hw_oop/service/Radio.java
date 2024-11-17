@@ -3,6 +3,16 @@ package ru.netology.hw_oop.service;
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int  defaultStationsQty = 10;
+    private int stationsQty = defaultStationsQty;
+
+    public Radio(int stationsQty) {
+        this.stationsQty = stationsQty;
+    }
+
+    public Radio() { //конструктор по умолч.
+        this.stationsQty = defaultStationsQty;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -16,7 +26,7 @@ public class Radio {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation >= stationsQty) {
             return;
         }
         currentStation = newCurrentStation;
@@ -45,7 +55,7 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation == 9) {
+        if (currentStation == stationsQty - 1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -54,7 +64,7 @@ public class Radio {
 
     public void prevStation() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = stationsQty - 1;
         } else {
             currentStation--;
         }
