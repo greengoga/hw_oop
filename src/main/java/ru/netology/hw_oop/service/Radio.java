@@ -1,22 +1,29 @@
 package ru.netology.hw_oop.service;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int defaultStationsQty = 10;
+    private int stationsQty = defaultStationsQty;
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
 
-    public int getCurrentVolume() {
-        return currentVolume;
+    public Radio(int stationsQty) {
+        this.stationsQty = stationsQty;
     }
 
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation >= stationsQty) {
             return;
         }
         currentStation = newCurrentStation;
@@ -45,7 +52,7 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation == 9) {
+        if (currentStation == stationsQty - 1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -54,7 +61,7 @@ public class Radio {
 
     public void prevStation() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = stationsQty - 1;
         } else {
             currentStation--;
         }
