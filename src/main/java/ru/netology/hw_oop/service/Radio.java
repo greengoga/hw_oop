@@ -1,25 +1,22 @@
 package ru.netology.hw_oop.service;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentStation;
     private int currentVolume;
-    private int  defaultStationsQty = 10;
+    private int defaultStationsQty = 10;
     private int stationsQty = defaultStationsQty;
+
 
     public Radio(int stationsQty) {
         this.stationsQty = stationsQty;
-    }
-
-    public Radio() { //конструктор по умолч.
-        this.stationsQty = defaultStationsQty;
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void setCurrentStation(int newCurrentStation) {
